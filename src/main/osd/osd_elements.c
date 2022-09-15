@@ -1465,6 +1465,18 @@ static void osdElementVtxChannel(osdElementParms_t *element)
 }
 #endif // USE_VTX_COMMON
 
+
+static void osdElementCraftName(osdElementParms_t *element)
+{
+	if (osdConfig()->osd_craftname_msgs == true) {
+		osdElementWarnings(&element);
+	}
+	if (strlen(element->buff) == 0) {
+		osdBackgroundCraftName(&element);
+	}	
+}
+
+
 static void osdElementWarnings(osdElementParms_t *element)
 {
     bool elementBlinking = false;
@@ -1475,7 +1487,7 @@ static void osdElementWarnings(osdElementParms_t *element)
         CLR_BLINK(OSD_WARNINGS);
     }
 
-    #ifdef USE_CRAFTNAME_MSGS
+ /*   #ifdef USE_CRAFTNAME_MSGS
     // Injects data into the CraftName variable for systems which limit
     // the available MSP data field in their OSD.
     if (osdConfig()->osd_craftname_msgs == true) {
@@ -1502,7 +1514,7 @@ static void osdElementWarnings(osdElementParms_t *element)
         }
         strncpy(pilotConfigMutable()->name, element->buff, MAX_NAME_LENGTH);
     }
-    #endif // USE_CRAFTNAME_MSGS
+    #endif // USE_CRAFTNAME_MSGS*/
 }
 
 // Define the order in which the elements are drawn.
@@ -1604,7 +1616,7 @@ const osdElementDrawFn osdElementDrawFunction[OSD_ITEM_COUNT] = {
     [OSD_ITEM_TIMER_1]            = osdElementTimer,
     [OSD_ITEM_TIMER_2]            = osdElementTimer,
     [OSD_FLYMODE]                 = osdElementFlymode,
-    [OSD_CRAFT_NAME]              = NULL,  // only has background
+    [OSD_CRAFT_NAME]              = osdElementCraftName,  // only has background
     [OSD_THROTTLE_POS]            = osdElementThrottlePosition,
 #ifdef USE_VTX_COMMON
     [OSD_VTX_CHANNEL]             = osdElementVtxChannel,
@@ -1717,7 +1729,7 @@ const osdElementDrawFn osdElementBackgroundFunction[OSD_ITEM_COUNT] = {
     [OSD_STICK_OVERLAY_LEFT]      = osdBackgroundStickOverlay,
     [OSD_STICK_OVERLAY_RIGHT]     = osdBackgroundStickOverlay,
 #endif
-    [OSD_DISPLAY_NAME]            = osdBackgroundDisplayName,
+    //[OSD_DISPLAY_NAME]            = osdBackgroundDisplayName,
 };
 
 static void osdAddActiveElement(osd_items_e element)
