@@ -1497,6 +1497,7 @@ const clivalue_t valueTable[] = {
     { "osd_framerate_hz",           VAR_UINT16 | MASTER_VALUE, .config.minmaxUnsigned = { OSD_FRAMERATE_MIN_HZ, OSD_FRAMERATE_MAX_HZ }, PG_OSD_CONFIG, offsetof(osdConfig_t, framerate_hz) },
     { "osd_menu_background",        VAR_UINT8  | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_CMS_BACKGROUND }, PG_OSD_CONFIG, offsetof(osdConfig_t, cms_background_type) },
 #endif // end of #ifdef USE_OSD
+    { "osd_craftname_msgs", VAR_UINT8 | MASTER_VALUE | MODE_LOOKUP, .config.lookup = { TABLE_OFF_ON }, PG_OSD_CONFIG, offsetof(osdConfig_t, osd_craftname_msgs) },
 
 // PG_SYSTEM_CONFIG
 #if defined(STM32F4) || defined(STM32G4)
