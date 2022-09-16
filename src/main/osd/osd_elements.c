@@ -785,6 +785,8 @@ static void osdBackgroundCameraFrame(osdElementParms_t *element)
 
 static void osdBackgroundCraftName(osdElementParms_t *element)
 {
+	strcpy(element->buff, "DUPA");
+	/*
     if (strlen(pilotConfig()->name) == 0) {
         strcpy(element->buff, "CRAFT_NAME");
     } else {
@@ -798,6 +800,7 @@ static void osdBackgroundCraftName(osdElementParms_t *element)
         }
         element->buff[i] = '\0';
     }
+	*/
 }
 
 #ifdef USE_ACC
@@ -872,6 +875,8 @@ static void osdElementDisarmed(osdElementParms_t *element)
 
 static void osdBackgroundDisplayName(osdElementParms_t *element)
 {
+	strcpy(element->buff, "NAMEDUPA");
+	/*
     if (strlen(pilotConfig()->displayName) == 0) {
         strcpy(element->buff, "DISPLAY_NAME");
     } else {
@@ -885,6 +890,7 @@ static void osdBackgroundDisplayName(osdElementParms_t *element)
         }
         element->buff[i] = '\0';
     }
+	*/
 }
 
 #ifdef USE_PERSISTENT_STATS
